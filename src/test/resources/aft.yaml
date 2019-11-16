@@ -1,0 +1,28 @@
+global:
+  aftEnable: true  #该业务client是否接入AFT
+  innerConfig:
+    suspendRecoverThreshold: 10  # 延迟恢复阈值，默认10分钟
+    suspendRecoverWeight: 100  # 当权重小于该值时开启延迟恢复，默认100
+providers:
+  service1:
+    regulationEffective: true  #该服务是否接入AFT
+    innerConfig:
+      timeWindow: 10  #时间窗口大小(秒)
+      leastWindowCount: 10  #时间窗口内最小的请求量
+      leastWindowExceptionRateMultiple: 6  #降权阈值(时间窗口内异常率与服务平均异常率的比值)
+      weightDegradeRate: 0.8  #降权速度
+      weightRecoverRate: 2  #权重恢复速度
+      degradeLeastWeight: 1 #降权的最小权重
+      degradeMaxIpCount: 2  #该服务最大降权实例数
+  service2:
+    regulationEffective: true
+    innerConfig:
+      timeWindow: 10
+      leastWindowCount: 10
+      leastWindowExceptionRateMultiple: 6
+      weightDegradeRate: 0.8
+      weightRecoverRate: 2
+      degradeLeastWeight: 1
+      degradeMaxIpCount: 2
+      suspendRecoverThreshold: 10  # 延迟恢复阈值，默认10分钟
+      suspendRecoverWeight: 100  # 当权重小于该值时开启延迟恢复，默认100

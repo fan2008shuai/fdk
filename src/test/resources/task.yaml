@@ -1,0 +1,9 @@
+product:
+  redis: "redis-product"
+  service: "service-product"
+staging:
+  redis: "redis-stating"
+  service: "service-stating"
+test:
+  redis: "redis-test"
+  service: "service-test"
