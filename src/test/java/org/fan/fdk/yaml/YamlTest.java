@@ -18,8 +18,10 @@ public class YamlTest {
 
     @Test
     public void test() {
+//        Yaml yaml = new Yaml();
         Yaml yaml = new Yaml(new Constructor(Customer.class));
         InputStream inputStream = this.getClass().getClassLoader().getResourceAsStream("customer.yaml");
+//        Map<String, Object> customer = yaml.load(inputStream);
         Customer customer = yaml.load(inputStream);
         System.out.println(customer);
     }
@@ -35,7 +37,7 @@ public class YamlTest {
     public void testTask() {
         InputStream inputStream = getClass().getClassLoader().getResourceAsStream("task.yaml");
         Map<String, Resources> map = YamlParser.parse(inputStream, Map.class);
-        System.out.println(map);
+        System.out.println(JSON.toJSON(map));
     }
 
     @Test
