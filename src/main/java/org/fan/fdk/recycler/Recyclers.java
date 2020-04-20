@@ -180,6 +180,7 @@ public abstract class Recyclers<T> {
         WeakOrderQueue(Stack<?> stack, Thread thread) {
             head = tail = new Link();
             owner = new WeakReference<>(thread);
+            // 头插法
             synchronized (stackLock(stack)) {
                 next = stack.head;
                 stack.head = this;
@@ -195,6 +196,7 @@ public abstract class Recyclers<T> {
 
             Link tail = this.tail;
             int writeIndex;
+            // link满了，尾插法接入一个新的link
             if ((writeIndex = tail.get()) == LINK_CAPACITY) {
                 this.tail = tail = tail.next = new Link();
                 writeIndex = tail.get();

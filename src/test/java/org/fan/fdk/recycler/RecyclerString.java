@@ -44,7 +44,7 @@ public class RecyclerString {
         final RecyclerString recyclerString = RecyclerString.getInstance();
 
         recyclerString.setValue("hello fdk");
-        recyclerString.recycle();
+//        recyclerString.recycle();
 
         Thread thread = new Thread(new Runnable() {
             @Override
