@@ -8,13 +8,13 @@ package org.fan.fdk.other;
 public class NoStackTree {
     public static void main(String[] args) {
 
-        ListNode node1 = new ListNode(1);
-        ListNode node2 = new ListNode(2);
-        ListNode node3 = new ListNode(3);
-        ListNode node4 = new ListNode(4);
+        TreeNode node1 = new TreeNode(1);
+        TreeNode node2 = new TreeNode(2);
+        TreeNode node3 = new TreeNode(3);
+        TreeNode node4 = new TreeNode(4);
 //        ListNode node5 = new ListNode(5);
-        ListNode node6 = new ListNode(6);
-        ListNode node7 = new ListNode(7);
+        TreeNode node6 = new TreeNode(6);
+        TreeNode node7 = new TreeNode(7);
 
         node1.left = node2;
         node1.right = node3;
@@ -30,16 +30,16 @@ public class NoStackTree {
         node7.father = node3;
         //前序遍历应该输出1，2，4，5，3，6，7;
         //去掉五节点和四节点也正确
-        NoStackTree tree = new NoStackTree();
-        tree.LinkedList(node1);
+
+        traverse(node1);
     }
 
-    public void LinkedList(ListNode root) {
+    private static void traverse(TreeNode root) {
         if (root == null) {
             return;
         }
-        ListNode last = null;
-        ListNode now = root;
+        TreeNode last = null;
+        TreeNode now = root;
         while (now != null) {
             if (last == now.left) {
                 if (now.right != null) {
@@ -54,17 +54,18 @@ public class NoStackTree {
                 now = now.father;
                 continue;
             }
-            System.out.println(now);
 
-            if (now.left==null){
-                if (now.right!=null){
+            System.out.println(now.val);
+
+            if (now.left == null) {
+                if (now.right != null) {
                     last = now;
                     now = now.right;
-                }else {
+                } else {
                     last = now;
                     now = now.father;
                 }
-            }else {
+            } else {
                 last = now;
                 now = now.left;
             }
@@ -77,26 +78,26 @@ public class NoStackTree {
 //                now = now.right;
 //            }
 
-
         }
     }
 
+    static class TreeNode {
+        private int val;
+        private TreeNode left;
+        private TreeNode right;
+        private TreeNode father;
+
+        TreeNode(int val) {
+            this.val = val;
+        }
+
+        @Override
+        public String toString() {
+            return "ListNode{" +
+                    "val=" + val +
+                    '}';
+        }
+    }
 }
 
-class ListNode {
-    public int no;
-    public ListNode left;
-    public ListNode right;
-    public ListNode father;
 
-    public ListNode(int no) {
-        this.no = no;
-    }
-
-    @Override
-    public String toString() {
-        return "ListNode{" +
-                "no=" + no +
-                '}';
-    }
-}
